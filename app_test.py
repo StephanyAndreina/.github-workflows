@@ -1,7 +1,12 @@
-from flask import Flask
-app = Flask(__name__)
-@app.route('/')
-def devops():
- return '<center><h1><font color=red>Germinare Tech, EU AMO DEVOPS</center>'
+import unittest
+from app import app
+class FlaskAppTests(unittest.TestCase):
+ def setUp(self):
+ self.client = app.test_client()
+
+ def test_devops(self):
+ response = self.client.get('/')
+ self.assertEqual(response.status_code, 200)
+ self.assertIn(b'Germinare',response.data)
 if __name__ == '__main__':
- app.run(debug=True, host='0.0.0.0')
+ unittest.main()

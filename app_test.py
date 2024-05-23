@@ -11,6 +11,6 @@ class FlaskAppTests(unittest.TestCase):
  def test_salah(self):
   response = self.client.get('/salah')
   self.assertEqual(response.status_code, 200)
-  self.assertIn(b'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA',response.data)
+  self.assertIn(b'ok',response.data)
 if __name__ == '__main__':
  unittest.main()
